@@ -9,12 +9,9 @@ jobs:
     name: "Trigger new build on nightly-deauther"
     runs-on: ubuntu-latest
     steps:
-      - name: Build message title
-        run: echo ::set-env name=TITLE::Deauther V3 $(echo ${{ github.sha }} | cut -c -7)
-          
       - name: Send message
         run: |
           curl -X POST https://api.github.com/repos/spacehuhntech/nightly-deauther/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "${{ env.TITLE }}", "client_payload": {}}'
+          --data '{"event_type": "${{ Deauther V3 $(echo ${{ github.sha }} | cut -c -7) }}", "client_payload": {}}'
